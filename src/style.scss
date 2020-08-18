@@ -1,0 +1,278 @@
+@import "./App.scss";
+
+// Auth Pages
+.auth {
+    width: 100%;
+    height: 100vh;
+
+    .card {
+        width: 90vw;
+        border-radius: 6px;
+        overflow: hidden;
+
+        .card-header {
+            padding-top: 30px;
+            padding-bottom: 30px;
+
+            h4 {
+                font-weight: 700;
+                font-family: 'Roboto', sans-serif;
+            }
+        }
+
+        .card-body {
+            padding-top: 30px;
+            padding-bottom: 30px;
+            font-family: 'Roboto', sans-serif;
+
+            p {
+                font-size: 14px;
+            }
+
+            .form-control {
+                height: 38px;
+                font-size: 14px;
+            }
+
+            .form-control:focus {
+                border: 1px solid #dfdfdf;
+            }
+
+            a {
+                font-size: 14px;
+                color: $unique-color;
+            }
+
+            .btn {
+                height: 38px;
+                font-size: 14px;
+                padding-left: 20px;
+                padding-right: 20px;
+                background: $unique-color;
+            }
+        }
+    }
+
+    @media (min-width: 576px) {
+        .card {
+            width: 500px;
+        }
+    }
+}
+
+// End Auth Pages
+
+// Master
+.master {
+    // Menu
+    .menu {
+        .side-menu {
+            width: 100%;
+            height: 100%;
+            overflow-y: auto;
+            background: #fff;
+
+            @media (max-width: 992px) {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                width: 250px;
+                height: 100vh;
+                overflow-y: auto;
+                z-index: 99;
+                transition: 0.6s all;
+            }
+
+            .header {
+                .img-box {
+                    width: 40px;
+                    height: 40px;
+                    overflow: hidden;
+
+                    img {
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+
+                .btn {
+                    width: 35px;
+                    height: 35px;
+                    padding: 0;
+                }
+
+                .dropdown-menu {
+                    font-size: 14px;
+                    font-family: 'Roboto', sans-serif;
+                }
+
+                .dropdown-toggle:after {
+                    content: none !important;
+                }
+            }
+
+            .body {
+                a {
+                    color: #555;
+                    display: block;
+                    font-size: 14px;
+                    transition: 0.3s;
+                    padding: 10px 15px;
+                    text-decoration: none;
+                    text-transform: capitalize;
+                    font-family: 'Roboto', sans-serif;
+                }
+
+                a:hover {
+                    background: #eee;
+                }
+
+                .isActive {
+                    background: #eee;
+                }
+
+                .btn {
+                    color: #555;
+                    font-size: 14px;
+                    transition: 0.3s;
+                    text-align: left;
+                    padding: 10px 15px;
+                    text-decoration: none;
+                    text-transform: capitalize;
+                    font-family: 'Roboto', sans-serif;
+                }
+
+                .btn:hover {
+                    background: #eee;
+                }
+            }
+        }
+
+        .open-menu {
+            left: 0 !important;
+        }
+
+        .hide-menu {
+            left: -100% !important;
+        }
+
+        @media (max-width: 992px) {
+            .top-bar {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                padding: 10px;
+                background: #fff;
+                z-index: 9;
+
+                img {
+                    width: 35px;
+                    height: 35px;
+                }
+
+                .btn {
+                    width: 35px;
+                    height: 35px;
+                    padding: 0;
+                }
+            }
+        }
+
+        @media (min-width: 992px) {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 250px;
+            height: 100vh;
+            background: none;
+            padding: 10px;
+        }
+    }
+
+    // End Menu
+
+    // Main
+    .main {
+        .dashboard {
+            padding-top: 10px;
+            padding-bottom: 10px;
+
+            a {
+                text-decoration: none;
+
+                .card {
+                    height: 120px;
+                    font-family: 'Roboto', sans-serif;
+
+                    h5 {
+                        color: #007bff;
+                        font-weight: 900;
+                    }
+
+                    p {
+                        color: #000;
+                        font-size: 14px;
+                        text-transform: capitalize;
+                    }
+                }
+            }
+        }
+
+        .index {
+            padding-top: 10px;
+            padding-bottom: 10px;
+
+            .form-control {
+                font-size: 14px;
+                font-family: 'Roboto', sans-serif;
+            }
+
+            .table {
+                background: #fff;
+
+                tr {
+                    td {
+                        padding-top: 10px;
+                        padding-bottom: 10px;
+
+                        p {
+                            font-size: 13px;
+                            margin-bottom: 0;
+                            margin-top: 10px;
+                            font-family: 'Roboto', sans-serif;
+                        }
+
+                        img {
+                            width: 40px;
+                            height: 40px;
+                        }
+
+                        .btn {
+                            font-size: 13px;
+                            margin-top: 3px;
+                            font-family: 'Roboto', sans-serif;
+                        }
+
+                        .dropdown-item {
+                            font-size: 13px;
+                            font-family: 'Roboto', sans-serif;
+                        }
+                    }
+                }
+            }
+        }
+
+        @media (max-width: 992px) {
+            margin-top: 55px;
+        }
+
+        @media (min-width: 992px) {
+            margin-left: 250px;
+        }
+    }
+
+    // End Main
+}
+
+// End Master

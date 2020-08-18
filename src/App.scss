@@ -1,17 +1,35 @@
-$primary-color: brown;
+$unique-color: #d64556;
 
-.App{
-  .container{
-    .row{
-      .col-12{
-        .card{
-          .card-body{
-            h5{
-              color: $primary-color;
-            }
-          }
-        }
-      }
-    }
-  }
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+.App {
+    background: #dfdfdf;
+    min-height: 100vh;
+}
+
+.btn-unique {
+    font-size: 14px;
+    border-radius: 0px;
+    background: #d64556;
+    font-family: 'Roboto', sans-serif;
+}
+
+.flex-center {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    height: 100%;
+}
+
+.flex-column {
+    -ms-flex-direction: column !important;
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+    flex-direction: column !important;
 }
