@@ -1,0 +1,17 @@
+$primary-color: brown;
+
+.App{
+  .container{
+    .row{
+      .col-12{
+        .card{
+          .card-body{
+            h5{
+              color: $primary-color;
+            }
+          }
+        }
+      }
+    }
+  }
+}
