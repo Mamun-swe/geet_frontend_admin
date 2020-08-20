@@ -1,6 +1,7 @@
 import React from 'react';
 import Dropdown from 'react-bootstrap/Dropdown';
 import testImg from '../assets/static/logo.png';
+import { Link } from 'react-router-dom';
 
 const CategoryTable = ({ categories }) => {
     return (
@@ -33,7 +34,7 @@ const CategoryTable = ({ categories }) => {
                                     </Dropdown.Toggle>
 
                                     <Dropdown.Menu className="p-0 border-0 rounded-0 shadow">
-                                        <Dropdown.Item href="#/action-1" className="p-2">
+                                        <Dropdown.Item as={Link} to={`/admin/category/${category.id}/edit`} className="p-2">
                                             <span className="ml-1">Edit</span>
                                         </Dropdown.Item>
                                         <Dropdown.Item href="#/action-1" className="p-2">

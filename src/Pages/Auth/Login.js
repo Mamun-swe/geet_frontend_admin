@@ -10,7 +10,7 @@ const Login = (props) => {
 
     const onSubmit = data => {
         setLoading(true);
-        console.log(data);
+        localStorage.setItem('token', data.email)
         props.history.push('/admin')
     }
 

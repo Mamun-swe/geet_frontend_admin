@@ -19,10 +19,7 @@ const UsersTable = ({ users }) => {
                             <td><p>{user.name}</p></td>
                             <td><p>{user.email}</p></td>
                             <td className="text-center">
-                                <buton
-                                    type="button"
-                                    className="btn btn-light rounded-0 shadow-none"
-                                >Block</buton>
+                                <buton type="button" className="btn btn-light rounded-0 shadow-none">Block</buton>
                             </td>
                         </tr>
                     )}

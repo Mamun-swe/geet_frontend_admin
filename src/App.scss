@@ -14,6 +14,19 @@ $unique-color: #d64556;
     font-family: 'Roboto', sans-serif;
 }
 
+// File Upload box
+.file-upload-box {
+    width: 80px;
+    height: 80px;
+    color: #a5a2a2;
+    background: #dfdfdf36;
+    cursor: pointer;
+}
+
+input[type="file"] {
+    display: none;
+}
+
 .flex-center {
     display: -webkit-box;
     display: -ms-flexbox;

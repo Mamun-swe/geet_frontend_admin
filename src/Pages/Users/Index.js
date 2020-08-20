@@ -1,50 +1,44 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import api from '../../api';
+import React, { useEffect } from 'react';
 import UsersTable from '../../Components/UsersTable';
+import { useSelector, useDispatch } from 'react-redux';
+import { usersList } from '../../Redux/Actions/usersAction';
+import Loader from '../../Components/Loading';
 
 const Index = () => {
-    const [users, setUsers] = useState([])
+
+    const dispatch = useDispatch()
+    const { loading, users, error } = useSelector((state) => state.users);
 
     useEffect(() => {
-        const fetchUsers = () => {
-            axios.get(`${api}users`)
-                .then(res => {
-                    setUsers(res.data)
-                })
-                .catch(err => {
-                    if (err) {
-                        console.log(err);
-                    }
-                })
-        }
-
-        fetchUsers();
-    }, [])
-
+        dispatch(usersList());
+    }, [dispatch]);
 
     return (
         <div className="index">
-            <div className="container-fluid">
-                <div className="row">
-                    <div className="col-12 pb-2 pr-lg-4">
-                        <div className="d-flex">
-                            <div className="flex-fill">
-                                <input
-                                    type="text"
-                                    className="form-control rounded-0 shadow-none border-0"
-                                    placeholder="Search for ..."
-                                />
+            {loading ?
+                <Loader /> :
+                error ?
+                    <h3 className="text-danger">{error}</h3> :
+                    <div className="container-fluid">
+                        <div className="row">
+                            <div className="col-12 pb-2 pr-lg-4">
+                                <div className="d-flex">
+                                    <div className="flex-fill">
+                                        <input
+                                            type="text"
+                                            className="form-control rounded-0 shadow-none border-0"
+                                            placeholder="Search for ..."
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="col-12 pr-lg-4">
+                                <UsersTable users={users} />
                             </div>
                         </div>
                     </div>
-
-                    <div className="col-12 pr-lg-4">
-                        <UsersTable users={users} />
-                    </div>
-
-                </div>
-            </div>
+            }
         </div>
     );
 };

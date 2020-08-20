@@ -7,6 +7,8 @@ import { ic_close, ic_dehaze } from 'react-icons-kit/md';
 import SideMenu from '../Components/SideMenu';
 import DashboardIndex from './Dashboard/Index';
 import CategoryIndex from './Category/Index';
+import CategoryCreate from './Category/Create';
+import CategoryEdit from './Category/Edit';
 import AlbumIndex from './Album/Index';
 import SingerIndex from './Singer/Index';
 import SongsIndex from './Song/Index';
@@ -65,6 +67,8 @@ const Master = (props) => {
                 <Switch>
                     <Route exact path="/admin/" component={DashboardIndex} />
                     <Route exact path="/admin/category" component={CategoryIndex} />
+                    <Route exact path="/admin/category/create" component={CategoryCreate} />
+                    <Route exact path="/admin/category/:id/edit" component={CategoryEdit} />
                     <Route exact path="/admin/album" component={AlbumIndex} />
                     <Route exact path="/admin/singer" component={SingerIndex} />
                     <Route exact path="/admin/songs" component={SongsIndex} />

@@ -18,6 +18,7 @@ import Logo from '../assets/static/logo.png';
 const SideMenu = (props) => {
 
     const logout = () => {
+        localStorage.clear()
         props.history.push('/')
     }
 
