@@ -10,13 +10,16 @@ import CategoryIndex from './Category/Index';
 import CategoryCreate from './Category/Create';
 import CategoryEdit from './Category/Edit';
 import AlbumIndex from './Album/Index';
+import AlbumCreate from './Album/Create';
 import SingerIndex from './Singer/Index';
+import SingerCreate from './Singer/Create';
 import SongsIndex from './Song/Index';
+import SongCreate from './Song/Create';
 import UsersIndex from './Users/Index';
 
 import Logo from '../assets/static/logo.png';
 
-const Master = (props) => {
+const Master = () => {
     const [show, setShow] = useState(false);
 
     const openMenu = () => {
@@ -59,7 +62,7 @@ const Master = (props) => {
                 </div>
 
                 {/* Side Menu */}
-                <SideMenu show={show} {...props} />
+                <SideMenu show={show} />
             </div>
 
             {/* Main */}
@@ -70,8 +73,11 @@ const Master = (props) => {
                     <Route exact path="/admin/category/create" component={CategoryCreate} />
                     <Route exact path="/admin/category/:id/edit" component={CategoryEdit} />
                     <Route exact path="/admin/album" component={AlbumIndex} />
+                    <Route exact path="/admin/album/create" component={AlbumCreate} />
                     <Route exact path="/admin/singer" component={SingerIndex} />
+                    <Route exact path="/admin/singer/create" component={SingerCreate} />
                     <Route exact path="/admin/songs" component={SongsIndex} />
+                    <Route exact path="/admin/songs/create" component={SongCreate} />
                     <Route exact path="/admin/users" component={UsersIndex} />
                     <Route path="*">
                         <h1 className="text-center mt-5"><b>404 Page not found</b></h1>

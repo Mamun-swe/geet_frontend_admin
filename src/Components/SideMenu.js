@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import { Icon } from 'react-icons-kit';
 import {
     ic_dashboard,
@@ -12,14 +12,16 @@ import {
     ic_settings,
     ic_account_circle
 } from 'react-icons-kit/md';
+
 import Dropdown from 'react-bootstrap/Dropdown';
 import Logo from '../assets/static/logo.png';
 
 const SideMenu = (props) => {
+    const history = useHistory();
 
     const logout = () => {
         localStorage.clear()
-        props.history.push('/')
+        history.push('/')
     }
 
     return (

@@ -32,7 +32,7 @@ const Index = () => {
                                     </div>
                                     <div>
                                         <Link
-                                            to="/admin/category/create"
+                                            to="/admin/album/create"
                                             className="btn btn-unique shadow-none text-white px-3"
                                         >Make New</Link>
                                     </div>
