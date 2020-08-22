@@ -11,30 +11,60 @@ import Select from 'react-select';
 const Create = () => {
     const { register, handleSubmit, errors } = useForm()
     const [allSingers, setAllSingers] = useState([])
+    const [selectedSingers, setSelectedSingers] = useState([])
+    const [selectedAlbum, setSelectedAlbum] = useState({})
+    const [singerErr, setSingerErr] = useState("")
+    const [albumrErr, setAlbumErr] = useState("")
 
     useEffect(() => {
         // fetch singers
-        const fetchSingers = () => {
-            axios.get(`${api}users`)
-                .then(res => {
-                    setAllSingers(res.data)
-                })
-                .catch(err => {
-                    if (err) {
-                        console.log(err);
-                    }
-                })
+        const fetchSingers = async () => {
+            try {
+                const singers = await axios.get(`${api}users`)
+                setAllSingers(singers.data)
+            } catch (error) {
+                console.log(error.message);
+            }
         }
         fetchSingers()
-
     }, [])
 
-    const renderList = () => {
+    const singerRenderList = () => {
         return (allSingers.map(data => ({ label: data.name, value: data.id })))
     }
 
+    const albumRenderList = () => {
+        return (allSingers.map(data => ({ label: data.name, value: data.id })))
+    }
+
+    const onChangeSingers = event => {
+        setSelectedSingers(event)
+    }
+
+    const onChangeAlbum = event => {
+        setSelectedAlbum(event)
+    }
+
     const submitSong = data => {
-        console.log(data);
+        if (!selectedSingers || selectedSingers.length <= 0) {
+            return setSingerErr('Singer is required.')
+        }
+
+        if (!selectedAlbum.value) {
+            return setAlbumErr('Album is required.')
+        }
+        setSingerErr("")
+        setAlbumErr("")
+
+        const song = {
+            title: data.title,
+            singers: selectedSingers,
+            album: selectedAlbum
+        }
+
+        console.log(song);
+
+
     }
 
 
@@ -65,7 +95,7 @@ const Create = () => {
                                         }
                                         <input
                                             type="text"
-                                            name="name"
+                                            name="title"
                                             className="form-control rounded-0 shadow-none"
                                             placeholder="Song title"
                                             ref={register({
@@ -76,23 +106,34 @@ const Create = () => {
 
                                     {/* Singer */}
                                     <div className="form-group mb-4">
-                                        {errors.singers && errors.singers.message ? (
-                                            <small className="text-danger">{errors.singers && errors.singers.message}</small>
-                                        ) : <small className="text-muted">Select singer's</small>
-                                        }
+                                        {singerErr ? (
+                                            <small className="text-danger">{singerErr}</small>
+                                        ) : <small className="text-muted">Singer</small>}
                                         <Select
-                                            // defaultValue={[allSingers[2].name, allSingers[3].name]}
                                             isMulti
-                                            options={renderList()}
+                                            options={singerRenderList()}
                                             className="basic-multi-select"
                                             classNamePrefix="select"
-                                            ref={register({
-                                                required: "Singer's is required."
-                                            })}
+                                            placeholder="Select singer's"
+                                            onChange={onChangeSingers}
                                         />
                                     </div>
 
-                                    <button type="submit" className="btn btn-primary shadow-none text-white float-right">Submit</button>
+                                    {/* Album */}
+                                    <div className="form-group mb-4">
+                                        {albumrErr ? (
+                                            <small className="text-danger">{albumrErr}</small>
+                                        ) : <small className="text-muted">Singer</small>}
+                                        <Select
+                                            options={albumRenderList()}
+                                            className="basic-multi-select"
+                                            classNamePrefix="select"
+                                            placeholder="Select album"
+                                            onChange={onChangeAlbum}
+                                        />
+                                    </div>
+
+                                    <button type="submit" className="btn btn-primary shadow-none text-white float-right" style={{ width: '120px', height: '40px' }}>Submit</button>
                                 </form>
                             </div>
                         </div>
@@ -102,9 +143,5 @@ const Create = () => {
         </div>
     );
 };
-
-// https://stackoverflow.com/questions/47672117/react-select-how-to-show-iterate-through-data-from-api-call-in-option-instea
-// https://medium.com/how-to-react/react-select-dropdown-tutorial-using-react-select-51664ab8b6f3
-// http://www.shahqaan.com/blog/react-select/
 
 export default Create;
